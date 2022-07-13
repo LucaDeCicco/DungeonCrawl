@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Items;
+import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import com.codecool.dungeoncrawl.logic.actors.Sword;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -18,6 +19,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.util.Random;
 
 public class Main extends Application {
     GameMap map = MapLoader.loadMap();
@@ -98,6 +101,15 @@ public class Main extends Application {
                 refresh();
                 break;
         }
+        int[] dxList = new int[]{0,1,-1};
+        Random random = new Random();
+        for (Skeleton skeleton:map.getSkeletonList()){
+            skeleton.move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
+        }
+//        map.getSkeleton().move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
+        refresh();
+
+
     }
 
     private void refresh() {
