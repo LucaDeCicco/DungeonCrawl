@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -35,6 +36,13 @@ public class Main extends Application {
 
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 1, 0);
+
+        Button button = new Button("Pick item");
+        ui.add(button,0,1);
+        button.setFocusTraversable(false);
+        button.setOnAction((event) -> {
+            System.out.println("Button clicked!");
+        });
 
         BorderPane borderPane = new BorderPane();
 
