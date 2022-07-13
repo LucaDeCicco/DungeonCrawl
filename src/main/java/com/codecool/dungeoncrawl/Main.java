@@ -1,8 +1,10 @@
 package com.codecool.dungeoncrawl;
 
 import com.codecool.dungeoncrawl.logic.Cell;
+import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.actors.Items;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -37,11 +39,29 @@ public class Main extends Application {
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 1, 0);
 
+        ui.add(new Label("Inventory: "),0,2);
+
+
+
         Button button = new Button("Pick item");
         ui.add(button,0,1);
         button.setFocusTraversable(false);
         button.setOnAction((event) -> {
-            System.out.println("Button clicked!");
+            int x = map.getPlayer().getX();
+            int y = map.getPlayer().getY();
+            Items itemToPick = map.getCell(x,y).getItem();
+            if (itemToPick!=null){
+                map.getPlayer().addItem(itemToPick);
+
+
+                map.getCell(x,y).setItem(null);
+                String inventory = "";
+                for(Items item:map.getPlayer().getListOfItems()){
+                    inventory+=item.getTileName()+", ";
+                }
+                ui.add(new Label(inventory),0,3);
+                System.out.println(map.getPlayer().getListOfItems());
+            }
         });
 
         BorderPane borderPane = new BorderPane();
