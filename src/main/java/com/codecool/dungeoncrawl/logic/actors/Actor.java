@@ -8,8 +8,8 @@ import java.awt.*;
 import java.util.Objects;
 
 public abstract class Actor implements Drawable {
-    private Cell cell;
-    private int health = 10;
+    protected Cell cell;
+    protected int health = 10;
 
     public Actor(Cell cell) {
         this.cell = cell;
@@ -25,9 +25,9 @@ public abstract class Actor implements Drawable {
             nextCell.setActor(this);
             cell = nextCell;
         }
-        else if (nextCell.getType()!= CellType.WALL&& nextCell.getActor()!=null) {
-            System.out.println(nextCell.getActor().getTileName());
-        }
+//        else if (nextCell.getType()!= CellType.WALL&& nextCell.getActor()!=null) {
+////            System.out.println(nextCell.getActor().getTileName());
+//        }
 
     }
 
