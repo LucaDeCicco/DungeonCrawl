@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Items;
+import com.codecool.dungeoncrawl.logic.actors.Sword;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -51,16 +52,16 @@ public class Main extends Application {
             int y = map.getPlayer().getY();
             Items itemToPick = map.getCell(x,y).getItem();
             if (itemToPick!=null){
+                if (itemToPick.getClass().getSimpleName().equals("Sword")){
+                    Tiles.getTileMap().replace("player", new Tiles.Tile(27,0));
+                }
                 map.getPlayer().addItem(itemToPick);
-
-
                 map.getCell(x,y).setItem(null);
                 String inventory = "";
                 for(Items item:map.getPlayer().getListOfItems()){
                     inventory+=item.getTileName()+", ";
                 }
                 ui.add(new Label(inventory),0,3);
-                System.out.println(map.getPlayer().getListOfItems());
             }
         });
 

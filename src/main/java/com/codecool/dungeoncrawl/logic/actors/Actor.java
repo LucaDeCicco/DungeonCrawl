@@ -23,11 +23,7 @@ public abstract class Actor implements Drawable {
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
-            Items item = cell.getItem();
-//            if (item!=null){
-//                System.out.println(item.getClass().getSimpleName());
-//
-//            }
+
         }
 
     }
