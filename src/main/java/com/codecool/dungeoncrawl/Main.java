@@ -110,7 +110,6 @@ public class Main extends Application {
                 map.getEnemyList().remove(enemy);
                 DeadSkeleton deadEnemy = new DeadSkeleton(map.getCell(enemyX,enemyY));
                 map.getEnemyList().add(deadEnemy);
-//                Tiles.getTileMap().replace(enemy.getTileName(), new Tiles.Tile(18,24));
             }
             else {
                 enemy.move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
