@@ -23,14 +23,7 @@ import java.util.Random;
 
 public class Main extends Application {
      String txtMapFile= "/map.txt" ;
-//    private   void checkNextLevel(boolean nextLevel){
-//        if (nextLevel){
-//            txtMapFile = "/map2.txt";
-//        }
-//        else {
-//            txtMapFile ="/map.txt";
-//        }
-//    }
+     Scene scene;
 
     GameMap map = MapLoader.loadMap(txtMapFile);
     Canvas canvas = new Canvas(
@@ -82,7 +75,7 @@ public class Main extends Application {
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
 
-        Scene scene = new Scene(borderPane);
+        scene = new Scene(borderPane);
         primaryStage.setScene(scene);
         refresh();
         scene.setOnKeyPressed(this::onKeyPressed);
@@ -136,7 +129,9 @@ public class Main extends Application {
 
     private void refresh() {
         if (Player.nextLevel){
-            map = MapLoader.loadMap("/map2.txt");/////////////////////
+            map = MapLoader.loadMap("/map2.txt");
+            Player.nextLevel = false;
+            scene.setOnKeyPressed(this::onKeyPressed);
         }
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
