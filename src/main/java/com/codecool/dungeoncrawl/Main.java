@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.*;
+import com.sun.javafx.iio.gif.GIFImageLoaderFactory;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -70,7 +71,19 @@ public class Main extends Application {
             }
             if (itemToPick!=null){
                 if (itemToPick.getClass().getSimpleName().equals("Sword")){
-                    Tiles.getTileMap().replace("player", new Tiles.Tile(27,0));
+                    int swordsCounter = 0;
+                    for (Items item: map.getPlayer().getListOfItems()){
+                        if (item instanceof Sword){
+                            swordsCounter++;
+                        }
+                    }
+                    if (swordsCounter>0){
+                        Tiles.getTileMap().replace("player", new Tiles.Tile(30,2));
+                        map.getPlayer().setDamage(30);
+                        System.out.println(map.getPlayer().getDamage());
+                    }else{
+                        Tiles.getTileMap().replace("player", new Tiles.Tile(27,0));
+                    }
                 }
                 map.getPlayer().addItem(itemToPick);
                 map.getCell(x,y).setItem(null);
@@ -140,6 +153,7 @@ public class Main extends Application {
     }
 
     private void refresh() {
+//        System.out.println(map.getPlayer().getDamage());
         if (Player.nextLevel){
             map = MapLoader.loadMap("/map2.txt");
             Player.nextLevel = false;

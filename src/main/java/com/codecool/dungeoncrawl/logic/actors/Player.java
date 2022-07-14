@@ -31,13 +31,16 @@ public class Player extends Actor implements Inventory {
 
     @Override
     public void move(int dx, int dy) {
+        int hasSwordCounter = 0;
         for (Items item : listItems) {
             if (item instanceof Sword){
-                hasSword = true;
+                hasSwordCounter ++;
             }
         }
-        if (hasSword){
+        if (hasSwordCounter == 1){
             damage = 10;
+        } else if (hasSwordCounter==2) {
+            damage = 30;
         }
         Cell nextCell = cell.getNeighbor(dx, dy);
         if (nextCell.getType()!= CellType.WALL&&

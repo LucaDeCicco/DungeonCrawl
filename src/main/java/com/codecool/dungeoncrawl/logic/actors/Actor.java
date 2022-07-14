@@ -41,6 +41,10 @@ public abstract class Actor implements Drawable {
         this.health = health;
     }
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
     public Cell getCell() {
         return cell;
     }
