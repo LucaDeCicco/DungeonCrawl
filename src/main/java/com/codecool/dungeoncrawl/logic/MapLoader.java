@@ -67,6 +67,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Cheese(cell);
                             break;
+                        case 'm':
+                            cell.setType(CellType.FLOOR);
+                            map.addBigMonster(new BigMonster(cell));
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

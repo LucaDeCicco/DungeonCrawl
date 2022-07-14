@@ -132,6 +132,7 @@ public class Main extends Application {
         Random random = new Random();
         List<Actor> newEnemyList = List.copyOf(map.getEnemyList());
         for (Actor enemy:newEnemyList){
+            System.out.println(enemy.getTileName());
             if (enemy.getHealth()<=0){
                 int enemyX = enemy.getX();
                 int enemyY = enemy.getY();
