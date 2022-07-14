@@ -31,7 +31,6 @@ public class Player extends Actor implements Inventory {
 
     @Override
     public void move(int dx, int dy) {
-        System.out.println("caca");
         for (Items item : listItems) {
             if (item instanceof Sword){
                 hasSword = true;

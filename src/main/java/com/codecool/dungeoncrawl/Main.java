@@ -32,6 +32,8 @@ public class Main extends Application {
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
 
+    Label damageLabel = new Label();
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -45,17 +47,27 @@ public class Main extends Application {
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 1, 0);
 
-        ui.add(new Label("Inventory: "),0,2);
+        ui.add(new Label("Damage: "), 0, 2);
+        ui.add(damageLabel, 1, 2);
+
+
+        ui.add(new Label("Inventory: "),0,3);
 
 
 
         Button button = new Button("Pick item");
         ui.add(button,0,1);
+
         button.setFocusTraversable(false);
         button.setOnAction((event) -> {
             int x = map.getPlayer().getX();
             int y = map.getPlayer().getY();
             Items itemToPick = map.getCell(x,y).getItem();
+            if (itemToPick!=null){
+                if (itemToPick.getClass().getSimpleName().equals("Cheese")){
+                    map.getPlayer().setHealth(30);
+                }
+            }
             if (itemToPick!=null){
                 if (itemToPick.getClass().getSimpleName().equals("Sword")){
                     Tiles.getTileMap().replace("player", new Tiles.Tile(27,0));
@@ -64,9 +76,9 @@ public class Main extends Application {
                 map.getCell(x,y).setItem(null);
                 String inventory = "";
                 for(Items item:map.getPlayer().getListOfItems()){
-                    inventory+=item.getTileName()+", ";
+                    inventory+=item.getTileName()+" ";
                 }
-                ui.add(new Label(inventory),0,3);
+                ui.add(new Label(inventory),0,4);
             }
         });
 
@@ -148,5 +160,6 @@ public class Main extends Application {
             }
         }
         healthLabel.setText("" + map.getPlayer().getHealth());
+        damageLabel.setText("" + map.getPlayer().getDamage());
     }
 }

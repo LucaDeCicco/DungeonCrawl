@@ -63,6 +63,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Door(cell);
                             break;
+                        case 'f':
+                            cell.setType(CellType.FLOOR);
+                            new Cheese(cell);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
