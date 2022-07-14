@@ -1,9 +1,6 @@
 package com.codecool.dungeoncrawl.logic;
 
-import com.codecool.dungeoncrawl.logic.actors.Actor;
-import com.codecool.dungeoncrawl.logic.actors.BigMonster;
-import com.codecool.dungeoncrawl.logic.actors.Player;
-import com.codecool.dungeoncrawl.logic.actors.Skeleton;
+import com.codecool.dungeoncrawl.logic.actors.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +44,9 @@ public class GameMap {
 
     public void addBigMonster(BigMonster bigMonster){
         enemyList.add(bigMonster);
+    }
+    public void addPrincess(Princess princess){
+        enemyList.add(princess);
     }
     public List<Actor> getEnemyList() {
         return enemyList;

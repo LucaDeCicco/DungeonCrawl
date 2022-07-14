@@ -80,7 +80,6 @@ public class Main extends Application {
                     if (swordsCounter>0){
                         Tiles.getTileMap().replace("player", new Tiles.Tile(30,2));
                         map.getPlayer().setDamage(30);
-                        System.out.println(map.getPlayer().getDamage());
                     }else{
                         Tiles.getTileMap().replace("player", new Tiles.Tile(27,0));
                     }
@@ -132,13 +131,25 @@ public class Main extends Application {
         Random random = new Random();
         List<Actor> newEnemyList = List.copyOf(map.getEnemyList());
         for (Actor enemy:newEnemyList){
-            System.out.println(enemy.getTileName());
             if (enemy.getHealth()<=0){
                 int enemyX = enemy.getX();
                 int enemyY = enemy.getY();
                 map.getEnemyList().remove(enemy);
-                DeadSkeleton deadEnemy = new DeadSkeleton(map.getCell(enemyX,enemyY));
-                map.getEnemyList().add(deadEnemy);
+                if (enemy.getTileName().equals("princess")){
+                    Heart heart = new Heart(map.getCell(enemyX,enemyY));
+                    map.getEnemyList().add(heart);
+//                    try {
+//                        Thread.sleep(2000);
+//                    } catch (InterruptedException ie) {
+//                        Thread.currentThread().interrupt();
+//                    }
+//                    System.exit(0);
+                }
+                else {
+                    DeadSkeleton deadEnemy = new DeadSkeleton(map.getCell(enemyX,enemyY));
+                    map.getEnemyList().add(deadEnemy);
+                }
+
             }
             else {
                 enemy.move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
@@ -148,13 +159,13 @@ public class Main extends Application {
             System.exit(0);
         }
 
+
         refresh();
 
 
     }
 
     private void refresh() {
-//        System.out.println(map.getPlayer().getDamage());
         if (Player.nextLevel){
             map = MapLoader.loadMap("/map2.txt");
             Player.nextLevel = false;

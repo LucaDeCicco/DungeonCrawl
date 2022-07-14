@@ -71,6 +71,13 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             map.addBigMonster(new BigMonster(cell));
                             break;
+                        case 'q':
+                            cell.setType(CellType.FLOOR);
+                            map.addPrincess(new Princess(cell));
+                            break;
+                        case 'h':
+                            cell.setType(CellType.FLOOR);
+                            new Heart(cell);
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
