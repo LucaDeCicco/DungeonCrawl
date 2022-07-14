@@ -48,9 +48,11 @@ public class Player extends Actor implements Inventory {
             cell = nextCell;
         }
         else if (nextCell.getType()!= CellType.WALL&& nextCell.getActor()!=null) {
-            System.out.println(nextCell.getActor().getTileName());
-            System.out.println(nextCell.getActor().damage);
+//            System.out.println(nextCell.getActor().getTileName());
+//            System.out.println(nextCell.getActor().damage);
             health = health - nextCell.getActor().damage;
+            nextCell.getActor().health = nextCell.getActor().health - damage;
+            System.out.println(nextCell.getActor().health);
 
         }
 //        System.out.println(damage);

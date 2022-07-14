@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.actors.Items;
 import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import com.codecool.dungeoncrawl.logic.actors.Sword;
@@ -20,6 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.List;
 import java.util.Random;
 
 public class Main extends Application {
@@ -103,13 +105,19 @@ public class Main extends Application {
         }
         int[] dxList = new int[]{0,1,-1};
         Random random = new Random();
-        for (Skeleton skeleton:map.getSkeletonList()){
-            skeleton.move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
+        List<Actor> newEnemyList = List.copyOf(map.getEnemyList());
+        for (Actor enemy:newEnemyList){
+            if (enemy.getHealth()<=0){
+                map.getEnemyList().remove(enemy);
+            }
+            enemy.move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
         }
 //        map.getSkeleton().move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
         if (map.getPlayer().getHealth() <= 0){
             System.exit(0);
         }
+
+//        map.getPlayer()
         refresh();
 
 
