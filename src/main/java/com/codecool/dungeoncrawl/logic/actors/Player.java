@@ -39,22 +39,15 @@ public class Player extends Actor implements Inventory {
         if (hasSword){
             damage = 10;
         }
-//        super.move(dx, dy);
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getType()!= CellType.WALL&& nextCell.getActor()==null){
+        if (nextCell.getType()!= CellType.WALL&& (nextCell.getActor()==null||nextCell.getActor().getTileName().equals("deadSkeleton"))){
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
-        } else if (nextCell.getType()!= CellType.WALL&&nextCell.getActor().getTileName().equals("deadSkeleton")) {
-            cell.setActor(null);
-            nextCell.setActor(this);
-            cell = nextCell;
-        } else if (nextCell.getType()!= CellType.WALL&& nextCell.getActor()!=null) {
+        }
+        else if (nextCell.getType()!= CellType.WALL&& nextCell.getActor()!=null) {
             health = health - nextCell.getActor().damage;
             nextCell.getActor().health = nextCell.getActor().health - damage;
-
-
         }
-//        System.out.println(damage);
     }
 }

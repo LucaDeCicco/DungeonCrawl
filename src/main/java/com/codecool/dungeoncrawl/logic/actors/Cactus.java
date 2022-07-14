@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.logic.Cell;
 public class Cactus extends Actor{
     public Cactus(Cell cell) {
         super(cell);
+        damage=5;
     }
 
     @Override
@@ -17,5 +18,6 @@ public class Cactus extends Actor{
         dx=0;
         dy=0;
         super.move(dx, dy);
+
     }
 }
