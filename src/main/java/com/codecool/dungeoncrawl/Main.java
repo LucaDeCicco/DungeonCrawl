@@ -107,6 +107,9 @@ public class Main extends Application {
             skeleton.move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
         }
 //        map.getSkeleton().move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
+        if (map.getPlayer().getHealth() <= 0){
+            System.exit(0);
+        }
         refresh();
 
 
