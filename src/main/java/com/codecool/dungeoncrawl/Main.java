@@ -4,10 +4,7 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
-import com.codecool.dungeoncrawl.logic.actors.Actor;
-import com.codecool.dungeoncrawl.logic.actors.Items;
-import com.codecool.dungeoncrawl.logic.actors.Skeleton;
-import com.codecool.dungeoncrawl.logic.actors.Sword;
+import com.codecool.dungeoncrawl.logic.actors.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -108,16 +105,19 @@ public class Main extends Application {
         List<Actor> newEnemyList = List.copyOf(map.getEnemyList());
         for (Actor enemy:newEnemyList){
             if (enemy.getHealth()<=0){
+                int enemyX = enemy.getX();
+                int enemyY = enemy.getY();
                 map.getEnemyList().remove(enemy);
+                DeadSkeleton deadEnemy = new DeadSkeleton(map.getCell(enemyX,enemyY));
+                map.getEnemyList().add(deadEnemy);
+//                Tiles.getTileMap().replace(enemy.getTileName(), new Tiles.Tile(18,24));
             }
             enemy.move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
         }
-//        map.getSkeleton().move(dxList[random.nextInt(3)],dxList[random.nextInt(3)]);
         if (map.getPlayer().getHealth() <= 0){
             System.exit(0);
         }
 
-//        map.getPlayer()
         refresh();
 
 

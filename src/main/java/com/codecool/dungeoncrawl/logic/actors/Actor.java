@@ -11,25 +11,24 @@ public abstract class Actor implements Drawable {
     protected Cell cell;
     protected int health = 10;
 
-    int damage;
+    protected int actorId ;
+    protected int damage;
 
     public Actor(Cell cell) {
         this.cell = cell;
         this.cell.setActor(this);
+
     }
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-//        System.out.println(nextCell.getActor().getTileName());
-        if (nextCell.getType()!= CellType.WALL&& nextCell.getActor()==null){
+        if (nextCell.getType()!= CellType.WALL && nextCell.getActor()==null){
 
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
         }
-//        else if (nextCell.getType()!= CellType.WALL&& nextCell.getActor()!=null) {
-////            System.out.println(nextCell.getActor().getTileName());
-//        }
+
 
     }
 
@@ -47,5 +46,9 @@ public abstract class Actor implements Drawable {
 
     public int getY() {
         return cell.getY();
+    }
+
+    public int getActorId() {
+        return actorId;
     }
 }
