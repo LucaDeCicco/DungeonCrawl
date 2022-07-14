@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Player extends Actor implements Inventory {
 
-
+    public static boolean nextLevel = false;
 //    List<Items> itemsList = new ArrayList<>();
     private boolean hasSword;
     public Player(Cell cell) {
@@ -40,7 +40,9 @@ public class Player extends Actor implements Inventory {
             damage = 10;
         }
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getType()!= CellType.WALL&& (nextCell.getActor()==null||nextCell.getActor().getTileName().equals("deadSkeleton"))){
+        if (nextCell.getType()!= CellType.WALL&&
+                (nextCell.getActor()==null||
+                        nextCell.getActor().getTileName().equals("deadSkeleton"))){
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
@@ -48,6 +50,14 @@ public class Player extends Actor implements Inventory {
         else if (nextCell.getType()!= CellType.WALL&& nextCell.getActor()!=null) {
             health = health - nextCell.getActor().damage;
             nextCell.getActor().health = nextCell.getActor().health - damage;
+            if (nextCell.getActor().getTileName().equals("door")){
+                for (Items item : listItems){
+                    if (item instanceof ItemKey){
+                        nextLevel = true;
+
+                    }
+                }
+            }
         }
     }
 }

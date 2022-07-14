@@ -1,14 +1,16 @@
 package com.codecool.dungeoncrawl.logic;
 
+import com.codecool.dungeoncrawl.Door;
+import com.codecool.dungeoncrawl.Main;
 import com.codecool.dungeoncrawl.logic.actors.*;
 
 import java.io.InputStream;
-import java.security.Key;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static GameMap loadMap() {
-        InputStream is = MapLoader.class.getResourceAsStream("/map.txt");
+    public static GameMap loadMap(String txtMapFile) {
+
+        InputStream is = MapLoader.class.getResourceAsStream(txtMapFile);
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
@@ -56,6 +58,10 @@ public class MapLoader {
                         case 'c':
                             cell.setType(CellType.FLOOR);
                             new Cactus(cell);
+                            break;
+                        case 'u':
+                            cell.setType(CellType.FLOOR);
+                            new Door(cell);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

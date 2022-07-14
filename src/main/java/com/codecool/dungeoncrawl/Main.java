@@ -22,7 +22,17 @@ import java.util.List;
 import java.util.Random;
 
 public class Main extends Application {
-    GameMap map = MapLoader.loadMap();
+     String txtMapFile= "/map.txt" ;
+//    private   void checkNextLevel(boolean nextLevel){
+//        if (nextLevel){
+//            txtMapFile = "/map2.txt";
+//        }
+//        else {
+//            txtMapFile ="/map.txt";
+//        }
+//    }
+
+    GameMap map = MapLoader.loadMap(txtMapFile);
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
             map.getHeight() * Tiles.TILE_WIDTH);
@@ -125,6 +135,9 @@ public class Main extends Application {
     }
 
     private void refresh() {
+        if (Player.nextLevel){
+            map = MapLoader.loadMap("/map2.txt");/////////////////////
+        }
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (int x = 0; x < map.getWidth(); x++) {
