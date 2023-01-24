@@ -39,7 +39,7 @@ It is a video game in which you are the main actor. You will have to fight diffe
 - [Java](https://www.java.com/)
 
 
-#### Frameworks
+#### Frameworks and dependencies
 - [JavaFX](https://openjfx.io/) - Java Framework
 - [PostgreSQL](https://www.postgresql.org/) - database used
 
