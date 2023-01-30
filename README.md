@@ -13,7 +13,7 @@ It is a video game in which you are the main actor. You will have to fight diffe
 - Weapons - you can pick up swords from the floor to increase your attack power
 - Different enemies - there are more enemies that can have more life or hit you harder
 - Cactus - when you touch a cactus your health will decrease
-- Save your progress - you can save your progress by pressing "ctrl + s" and giving a name to the save, and then when we enter the game again by choosing the respective save we will continue where we left off (in progress)
+- Save your progress - you can save your progress by pressing "ctrl + s" and giving a name to the save, and then when we enter the game again by choosing the respective save we will continue where we left off (Work in progress)
 
 
 
