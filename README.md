@@ -2,9 +2,9 @@
 
 # About the project
 
-This project was made by my, <b>[Luca De Cicco](https://github.com/LucaDeCicco)</b>.
+This project was made by myself.
 
-It is a video game in which you are the main actor. You will have to fight different enemies to reach the princess. In order to advance from level 1 to 2, you will have to find a key on the map that will help you reach the next level. Also on the map you can find swords that will help you be stronger, you can also find food that will increase your health. In the end, you will have to be prepared to fight the final boss in order to reach the princess.
+It is a video game in which you are the main character. You will have to fight different enemies to get to the princess. In order to advance to the next level, you will have to find a key on the map that will help you to unlock the next level. Also on the map you can find swords that will help you be stronger, you can also find food that will increase your health. In the end, you will have to be prepared to fight the final boss in order to reach the princess.
 
 ## Features
 
